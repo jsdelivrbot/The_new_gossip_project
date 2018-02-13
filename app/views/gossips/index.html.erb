@@ -1,0 +1,27 @@
+<% if user_signed_in?  %>
+<h1>Listing GOSSSIP</h1>
+<%= link_to 'Create', new_gossip_path %>
+<table>
+  <tr>
+    <th>anonymus_name :</th>
+    <th> Content</th>
+  </tr>
+
+  <% @gossips.each do |gossip| %>
+    <tr>
+      <td><%= user.anonymus_name %></td>
+      <td><%= gossip.content %></td>
+      <td><%= link_to 'Show', gossip_path(gossip) %></td>
+      <td><%= link_to 'Edit', edit_gossip_path(gossip) %></td>
+      <td><%= link_to 'Destroy', gossip_path(gossip),
+            method: :delete,
+            data: { confirm: 'REALLY ?????' } %></td>
+    </tr>
+  <% end %>
+</table>
+<% else %>
+<h1>You are not logged... Please login before !!</h1>
+<%= link_to "Login" , new_user_session_path %></br>
+<p>Not register now ??? </p>
+<%= link_to "Sign up", new_user_registration_path %>
+<% end %>

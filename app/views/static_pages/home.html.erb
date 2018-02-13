@@ -1,0 +1,19 @@
+<h1> This is my home page </h1>
+<ul>
+<% if user_signed_in?  %>
+  <li>
+    <h2>Welcome to the New Gossip Project :</h2>
+    <%= link_to "Create gossip", gossips_new_path %></br>
+    <%= link_to 'All Gossips', gossips_index_path  %></br>
+    <%= link_to 'Edit user', edit_path %></br>
+<%= link_to "logout", logout_path, method: :delete %>
+</li>
+<%else%>
+<li>
+  <p>Try to loggin first.</p></br>
+<%= link_to "Login" , new_user_session_path %>
+</li>
+<li>
+    <%= link_to "Sign up", new_user_registration_path %>
+</li>
+<% end %>
